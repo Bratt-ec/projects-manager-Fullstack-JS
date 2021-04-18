@@ -5,9 +5,10 @@ import TareaContext from '../../context/tareas/TareaContext';
 const Proyecto = ({proyecto}) => {
      // Obtener el state del Proyecto y Tareas
      const { proyectoActual } = useContext(ProyectoContext);
-     const { obtenerTareas} = useContext(TareaContext);
+     const { obtenerTareas, guardarTareaActual} = useContext(TareaContext);
     //  Funcion para agregar el proyecto actual
     const seleccionarProyecto = id=>{
+        guardarTareaActual(null);
         proyectoActual(id);
         // Obtenemos las tareas
         obtenerTareas(id)

@@ -37,6 +37,7 @@ export default (state, action) => {
                     proyectos: state.proyectos.filter(proyecto => proyecto.id !== action.payload),
                     proyecto: null
                 }
+
         default:
             return state;
     }
