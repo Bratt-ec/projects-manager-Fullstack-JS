@@ -9,7 +9,8 @@ const ListadoProyectos = () => {
    
     // Obtener proyectos cuando carga el componente
     useEffect(() => {
-        obtenerProyectos()
+        obtenerProyectos();
+        // eslint-disable-next-line
     }, []);
     // Verificamos si existen proyectos
     if(proyectos.length === 0 ) return <p>No hay proyectos, comienza creando uno!</p>;
