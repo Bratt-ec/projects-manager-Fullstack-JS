@@ -5,7 +5,7 @@ const Barra = () => {
         <header className='app-header'> 
             <p className='nombre-usuario'>Hola <span>Alejandro</span></p>
             <nav className='nav-principal'>
-                <a href='#' className>Cerrar Sesión</a>
+                <button className=' cerrar-sesion'>Cerrar Sesión</button>
             </nav>
         </header>
      );
