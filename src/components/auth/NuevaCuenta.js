@@ -1,11 +1,21 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import AlertaContext from "../../context/alertas/alertaContext";
+import AuthContext from "../../context/autentintacion/authContext";
 
-const NuevaCuenta = () => {
+const NuevaCuenta = (props) => {
   // Alerta Context
   const { alerta, mostrarAlerta } = useContext(AlertaContext);
+  const { registrarUsuario, mensaje, autenticado } = useContext(AuthContext)
 
+  
+  useEffect(() => {
+// En caso de que el usuario se haya autenticado o registrado acceda al dashboard
+    if(autenticado) props.history.push('/proyectos');
+// Muestra los errores que envie el servidor
+    if(mensaje) mostrarAlerta(mensaje.msg, mensaje.categoria);
+
+  }, [mensaje,autenticado, props.history])
   // State para iniciar sesión
   const [usuario, guardarUsuario] = useState({
     nombre: "",
@@ -46,6 +56,11 @@ const NuevaCuenta = () => {
     }
     
     // pasarlo al ACTION
+    registrarUsuario({
+      nombre,
+      email,
+      password
+    });
   };
   return (
     <div className="form-usuario">
