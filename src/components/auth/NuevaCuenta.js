@@ -26,7 +26,7 @@ const NuevaCuenta = () => {
 
             // Los 2 password sean iguales 
             
-            // pasarlo al ACTION
+            // pasarlo al ACTION 
         }
     return ( 
         <div className="form-usuario">
