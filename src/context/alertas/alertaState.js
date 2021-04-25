@@ -10,7 +10,7 @@ const AlertaState = props =>{
 
     const [state, dispatch] = useReducer(alertaReducer, initialState);
 
-    const mostratAlerta = (msg, categoria) =>{
+    const mostrarAlerta = (msg, categoria) =>{
         dispatch({
             type: MOSTRAR_ALERTA,
             payload: {
@@ -18,6 +18,7 @@ const AlertaState = props =>{
                 categoria
             }
         });
+        // Despues de 4 segundos limpia el error
         setTimeout(() => {
             dispatch({
                 type: OCULTAR_ALERTA,
@@ -32,7 +33,7 @@ const AlertaState = props =>{
                 // States
                 alerta: state.alerta,
                 // Funciones
-                mostratAlerta: mostratAlerta,
+                mostrarAlerta: mostrarAlerta,
             }}
         >
             {props.children}
