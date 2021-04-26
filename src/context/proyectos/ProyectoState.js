@@ -3,7 +3,7 @@ import ProyectoContext from './ProyectoContext';
 import ProyectoReducer from './ProyectoReducer';
 import { FORMULARIO_PROYECTO, OBTENER_PROYECTOS, AGREGAR_PROYECTO, VALIDAR_FORMULARIO, PROYECTO_ACTUAL, ELIMINAR_PROYECTO, PROYECTO_ERROR } from '../../types';
 import  cliAxios  from "../../config/axios";
-import  AuthToken  from "../../config/tokenAuth";
+
 
 const ProyectoState = props =>{
 

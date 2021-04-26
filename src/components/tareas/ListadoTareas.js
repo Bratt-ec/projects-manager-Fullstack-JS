@@ -5,7 +5,7 @@ import Tarea from "./Tarea";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 const ListadoTareas = () => {
   // Obtener el state del proyecto
-  const { proyecto, eliminarProyecto } = useContext(ProyectoContext);
+  const { proyecto, eliminarProyecto, obtenerProyectos} = useContext(ProyectoContext);
   const { tareasProyecto } = useContext(TareaContext);
   // Si no hay proyecto seleccionado
   if (!proyecto) return <h2>Selecciona un proyecto</h2>;
@@ -14,6 +14,7 @@ const ListadoTareas = () => {
   //Elimar el proyecto actual
   const onEliminarProyecto = () => {
     eliminarProyecto(proyectoActual._id);
+    obtenerProyectos();
   };
 
   return (
