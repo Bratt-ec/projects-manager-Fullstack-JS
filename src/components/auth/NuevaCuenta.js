@@ -14,7 +14,7 @@ const NuevaCuenta = (props) => {
     if(autenticado) props.history.push('/proyectos');
 // Muestra los errores que envie el servidor
     if(mensaje) mostrarAlerta(mensaje.msg, mensaje.categoria);
-
+  // eslint-disable-next-line
   }, [mensaje,autenticado, props.history])
   // State para iniciar sesión
   const [usuario, guardarUsuario] = useState({

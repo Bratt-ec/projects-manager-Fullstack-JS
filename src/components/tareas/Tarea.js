@@ -7,7 +7,7 @@ const Tarea = ({tarea}) => {
         const { proyecto }  = useContext(ProyectoContext);
     const [proyectoActual] = proyecto;
 
-    const { eliminarTarea, obtenerTareas, cambiarEstadoTarea, guardarTareaActual,actualizarTarea } = useContext(TareaContext);
+    const { eliminarTarea, obtenerTareas, guardarTareaActual,actualizarTarea } = useContext(TareaContext);
 
     // Funcion para eliminar tarea 
     const onEliminarTarea= (id)=>{
