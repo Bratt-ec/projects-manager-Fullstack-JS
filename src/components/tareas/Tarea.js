@@ -1,13 +1,18 @@
 import React, {useContext} from 'react';
+import ProyectoContext from '../../context/proyectos/ProyectoContext';
 import TareaContext from '../../context/tareas/TareaContext';
 
 const Tarea = ({tarea}) => {
-    const { eliminarTarea, obtenerTareas, cambiarEstadoTarea, guardarTareaActual } = useContext(TareaContext);
+        // Extrar si un proyecto esta activo
+        const { proyecto }  = useContext(ProyectoContext);
+    const [proyectoActual] = proyecto;
+
+    const { eliminarTarea, obtenerTareas, cambiarEstadoTarea, guardarTareaActual,actualizarTarea } = useContext(TareaContext);
 
     // Funcion para eliminar tarea 
     const onEliminarTarea= (id)=>{
-        eliminarTarea(id)
-        obtenerTareas(tarea.proyectoId)
+        eliminarTarea(id, proyectoActual._id);
+        obtenerTareas(proyectoActual._id)
     }
     // Modificar el estado de las tareas
     const cambiaEstado = tarea =>{
@@ -16,7 +21,7 @@ const Tarea = ({tarea}) => {
         }else{
             tarea.estado = true
         }
-        cambiarEstadoTarea(tarea);
+        actualizarTarea(tarea);
     }
 
     // Agrega una tarea actual al estado para editarla
@@ -35,7 +40,7 @@ const Tarea = ({tarea}) => {
             </div>
             <div className='acciones'>
                 <button type='button' className='btn btn-primario' onClick={()=> seleccionarTarea(tarea)} >Editar</button>
-                <button type='button' className='btn btn-secundario' onClick={  ()=> onEliminarTarea(tarea.id)}>Eliminar</button>
+                <button type='button' className='btn btn-secundario' onClick={  ()=> onEliminarTarea(tarea._id)}>Eliminar</button>
             </div>
         </li>
      );

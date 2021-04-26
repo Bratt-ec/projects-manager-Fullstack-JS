@@ -12,6 +12,7 @@ const FormTareas = () => {
     obtenerTareas,
     tareaSeleccionada,
     actualizarTarea,
+    limpiarTarea
   } = useContext(TareaContext);
   // State del formulario
   const [tarea, setTarea] = useState({
@@ -52,20 +53,22 @@ const FormTareas = () => {
     // Revisar si es edición o es nueva tarea
     if(tareaSeleccionada == null){
     // agregar la nueva tarea al state de tareas
-    tarea.proyectoId = proyectoActual.id;
-    tarea.estado = false;
+    tarea.proyecto = proyectoActual._id;
+
     agregarTarea(tarea);
     // Obtener y filtrar las tareas del proyecto
-    obtenerTareas(proyectoActual.id);
-    // reiniciar el form
-    setTarea({
-      nombre: "",
-    });
+    obtenerTareas(proyectoActual._id);
     }else{
       // Actualizar tarea existente
       actualizarTarea(tarea)
-      obtenerTareas(tarea.proyectoId)
+      obtenerTareas(proyectoActual._id);
+      limpiarTarea()
     }
+    obtenerTareas(proyectoActual._id);
+    // reiniciar el form
+    setTarea({
+      nombre: "", 
+    });
 
   };
 
