@@ -17,7 +17,7 @@ const Tarea = ({tarea}) => {
     // Modificar el estado de las tareas
     const cambiaEstado = tarea =>{
         if(tarea.estado){
-            tarea.estado = false
+            tarea.estado = true
         }else{
             tarea.estado = true
         }
